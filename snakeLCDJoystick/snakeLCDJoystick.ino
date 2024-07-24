@@ -67,6 +67,10 @@ void setup() {
   currentX = 1;
   currentY = 0;
 
+  //first fruit position
+  fruitX = random(0,7);
+  fruitY = random(0,7);
+
   score = 0;
 }
 
@@ -140,8 +144,14 @@ void resetSnake() {
 }
 
 void generateFruit(){
-  fruitX = 7 - snakeX[0];
-  fruitY = 7 - snakeX[0];
+  fruitX = (7 - snakeX[0]) + random(0,3);
+  fruitY = (7 - snakeX[0]) + random(0,3);
+
+  if (fruitX > 7) fruitX = 0;
+  else if (fruitX < 0) fruitX = 7;
+
+  if (fruitY > 7) fruitY = 0;
+  else if (fruitY < 0) fruitY = 7;
 }
 
 bool moveSnake(int x, int y) {
